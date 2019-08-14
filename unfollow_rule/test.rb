@@ -3,30 +3,27 @@ require './invoice.rb'
 
 describe 'Invoice' do
 
-	it 'should create an invoice successfully' do 
-		invoice = Invoice.new("Charles", "AZ", 1000)
-		expect(invoice.get_customer).to eq("Charles")
-	end	
+	let(:invoice) { Invoice.new("Charles", "AZ", 1000) }
 
-	it 'should return the correct value for state tax successfully' do 
-		invoice = Invoice.new("Charles", "AZ", 1000)
+	it 'should create an invoice successfully' do
+		expect(invoice.customer).to eq("Charles")
+	end
+
+	it 'should return the correct value for state tax successfully' do
 		expect(invoice.sales_tax).to eq(5.5)
-	end	
+	end
 
-	it 'should give details of invoice' do 
-		invoice = Invoice.new("Charles", "AZ", 1000)
+	it 'should give details of invoice' do
 		expect(invoice).to respond_to(:details)
-	end	
+	end
 
-	it 'should have a email_invoice method that sends emails' do 
-		invoice = Invoice.new("Charles", "AZ", 1000)
+	it 'should have a email_invoice method that sends emails' do
 		expect(invoice).to respond_to(:email_invoice)
-	end	
+	end
 
-	it 'should get the total_cost depending on the state' do 
-		invoice = Invoice.new("Charles", "AZ", 1000)
+	it 'should get the total_cost depending on the state' do
 		expect(invoice.total_cost(invoice.sales_tax)).to eq(1005.5)
-	end	
+	end
 
 
 end

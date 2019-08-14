@@ -1,20 +1,11 @@
 class Invoice
+
+	attr_reader :customer, :state, :total
+	
 	def initialize(customer, state, total)
 		@customer = customer
 		@state = state
 		@total = total
-	end
-
-	def get_customer
-		@customer
-	end
-
-	def get_state
-		@state
-	end
-
-	def get_total
-		@total
 	end
 
 	def details
@@ -37,4 +28,4 @@ class Invoice
 		puts "Emailing Invoice..."
 		puts details
 	end
-end	
+end
